@@ -153,20 +153,3 @@ def make_one_image_to_three(api_key: str, model_name: str, input_image_path: str
             print(f"   '{direction}' 이미지 생성 중 에러 발생: {e}")
 
     print("\n 모든 추가 뷰 이미지 생성 작업이 끝났습니다.")
-
-# 테스트용 실행 코드 (이 파일을 직접 실행할 때만 동작.)
-if __name__ == "__main__":
-    # NOTE: 이 블록이 동작하려면, 이 파일이 config.py와 같은 레벨에 있다고 가정하며, 
-    #       config.py에서 API_KEY와 STYLE_MODEL을 import해야 합니다. 
-    #       프로젝트 최종 구조에 따라 main 함수에서 호출하는 것이 일반적이므로,
-    #       이 테스트 코드는 제거하거나 주석 처리하는 것이 좋습니다.
-    from config import API_KEY, STYLE_MODEL # 테스트를 위해 임시 import
-
-    TEST_INPUT_PATH = "styled_output.jpg" # 1번 과정 결과물이 있다고 가정.
-    
-    # 파일이 존재할 때만 테스트.
-    if os.path.exists(TEST_INPUT_PATH):
-        make_one_image_to_three(API_KEY, STYLE_MODEL, TEST_INPUT_PATH)
-    else:
-        print(f"테스트를 위한 입력 파일({TEST_INPUT_PATH})이 없습니다.")
-        print("먼저 1번 과정(스타일 변환)을 실행하여 이미지를 생성해주세요.")
