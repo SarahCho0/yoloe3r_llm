@@ -20,7 +20,7 @@
 | style_choice.json | 사용자 입력 | "선택한 인테리어 스타일(예: ""AI 추천"", ""모던"", ""미니멀리즘"" 등)을 저장하는 파일입니다." | 
 | parsed_report.json| 중간 결과물| "main_report.py에서 생성된, 공간 분석 리포트의 파싱된 JSON 데이터입니다."|
 | img4new3r_org.png| 최종 결과물| 스타일 변경 또는 가구 수정 작업 후의 최종 정면 뷰 이미지입니다.|
-| img4new3r_left.png| 최종 결과물,img4new3r_org.png를 기반으로 생성된 좌측 뷰 이미지입니다.|
+| img4new3r_left.png| 최종 결과물| img4new3r_org.png를 기반으로 생성된 좌측 뷰 이미지입니다.|
 | img4new3r_right.png | 최종 결과물| img4new3r_org.png를 기반으로 생성된 우측 뷰 이미지입니다.|
 
 
