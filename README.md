@@ -55,7 +55,7 @@ pip install -r requirements.txt
 2. 환경 설정 
 config.py 파일을 열어 Google GenAI API 키와 초기 입력 이미지 경로를 설정해야 합니다.
 
-[Python]
+```Python
 # config.py
 API_KEY = "YOUR_GOOGLE_GENAI_API_KEY_HERE"# 3장의 최초 입력 이미지 경로를 실제 경로로 변경하세요.
 INITIAL_IMAGE_PATHS = [
