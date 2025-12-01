@@ -1,6 +1,6 @@
 #README.md 
 
-## AI 기반 인테리어 시뮬레이션 프로젝트 (PE3R)
+# AI 기반 인테리어 시뮬레이션 프로젝트 (PE3R)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python: 3.8+](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
@@ -8,7 +8,7 @@
 이 프로젝트는 사용자가 제공한 방 이미지와 인테리어 스타일 선택을 바탕으로, Google Gemini 모델을 활용하여 공간을 분석하고, 
 가구 수정 또는 전체 스타일 변경을 시뮬레이션하여 다양한 각도(정면, 좌/우측)의 이미지를 제공하는 AI 기반 인테리어 솔루션입니다.
 
-## 주요 기능
+# 주요 기능
 
 1.  최적 이미지 선택 (1단계): 사용자가 입력한 3장의 방 이미지 중 AI가 가장 적합한 1장(`selected_input_image.jpg`)을 선택합니다.
 2.  공간 분석 리포트 생성 (1단계): 선택된 이미지를 기반으로 공간의 현재 스타일, 문제점, 가구 추가/제거/변경에 대한 추천 사항을 분석하고 파싱된 JSON 파일(`parsed_report.json`)로 저장합니다.
@@ -17,7 +17,7 @@
     - 가구 부분 수정 (`main_modify_looks.py`): `user_choice.json`에 따라 AI 추천 가구의 추가, 제거, 변경 작업을 순차적으로 적용합니다.
 4.  3-Angle 뷰 생성 (2단계): 최종 결과 이미지(`img4new3r_org.png`)를 기반으로, 동일한 구조와 스타일을 유지한 채 수평 각도만 변경한 "좌측(-30°)" 및 "우측(+30°)" 뷰 이미지를 추가 생성합니다.
 
-## 기술 스택
+# 기술 스택
 
 | 분류     | 기술               | 상세                                                                    |
 | :---    | :---              | :---                                                                   |
@@ -26,15 +26,15 @@
 | 라이브러리 | `google-genai`    | Gemini 모델과의 통신                                                       |
 | 라이브러리 | `Pillow`          | 이미지 로드 및 저장 등 기본 처리                                               |
 
-## 설치 및 실행 방법
+# 설치 및 실행 방법
 
-# 1. 의존성 설치
+## 1. 의존성 설치
 
 프로젝트에 필요한 Python 패키지를 설치합니다.
 ```bash
 pip install -r requirements.txt
 
-2. 환경 설정
+## 2. 환경 설정
 config.py 파일을 열어 Google GenAI API 키와 초기 입력 이미지 경로를 설정해야 합니다.
 
 [Python]
@@ -47,7 +47,7 @@ INITIAL_IMAGE_PATHS = [
 ]
 # ...
 
-3. 워크플로우 실행
+## 3. 워크플로우 실행
 단계 1: 공간 분석 및 리포트 생성
 먼저 main_report.py를 실행하여 분석을 시작합니다.
 
@@ -70,7 +70,7 @@ B. 가구 부분 수정 시뮬레이션 (user_choice.json 사용)
 [Bash]
 python main_modify_looks.py
 
-최종 결과물
+# 최종 결과물
 시뮬레이션이 완료되면, 프로젝트 루트 디렉토리에 3장의 최종 이미지 파일이 생성됩니다.
 img4new3r_org.png (정면 뷰)
 img4new3r_left.png (좌측 뷰)
