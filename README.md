@@ -46,15 +46,13 @@
 
 # 설치 및 실행 방법
 
-```Python
 1. 의존성 설치
-
-프로젝트에 필요한 Python 패키지를 설치합니다.
+> 프로젝트에 필요한 Python 패키지를 설치합니다.
 ```bash
 pip install -r requirements.txt
 
 2. 환경 설정 
-config.py 파일을 열어 Google GenAI API 키와 초기 입력 이미지 경로를 설정해야 합니다.
+> config.py 파일을 열어 Google GenAI API 키와 초기 입력 이미지 경로를 설정해야 합니다.
 
 ```Python
 # config.py
@@ -68,7 +66,7 @@ INITIAL_IMAGE_PATHS = [
 
 3. 워크플로우 실행
 단계 1: 공간 분석 및 리포트 생성
-먼저 main_report.py를 실행하여 분석을 시작합니다.
+> 먼저 main_report.py를 실행하여 분석을 시작합니다.
 
 ```bash
 python main_report.py
@@ -81,11 +79,13 @@ user_choice.json{"use_add": true, "use_remove": false, "use_change": true} - 가
 
 단계3: 시뮬레이션 실행 (둘 중 하나 선택)
 
-A. 전체 스타일 변경 시뮬레이션 (style_choice.json 사용)
+> A. 전체 스타일 변경 시뮬레이션 (style_choice.json 사용)
+
 ```bash
 python main_new_looks.py
 
-B. 가구 부분 수정 시뮬레이션 (user_choice.json 사용)
+> B. 가구 부분 수정 시뮬레이션 (user_choice.json 사용)
+
 ```bash
 python main_modify_looks.py
 
