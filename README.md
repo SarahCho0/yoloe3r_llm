@@ -1,38 +1,36 @@
-#README.md 
-
-# AI 기반 인테리어 시뮬레이션 프로젝트 (PE3R)
+# YOLOE3R: Perception-Efficient 3D Reconstruction
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python: 3.8+](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
 
-이 프로젝트는 사용자가 제공한 방 이미지와 인테리어 스타일 선택을 바탕으로, Google Gemini 모델을 활용하여 공간을 분석하고, 
-가구 수정 또는 전체 스타일 변경을 시뮬레이션하여 다양한 각도(정면, 좌/우측)의 이미지를 제공하는 AI 기반 인테리어 솔루션입니다.
 
-## 프로젝트 파일 구조 및 역할
-| 파일명 | 역할 | 상세 설명 |
-| :--- | :---| :--- | 
-| config.py | 환경 설정 | API 키, Gemini 모델명(REPORT_MODEL, STYLE_MODEL), 초기 입력 이미지 경로 및 중간 결과물 저장 경로(SELECTED_IMAGE_PATH) 등을 정의합니다. | 
-| main_report.py | 1단계: 공간 분석 리포트 생성 | 3장의 초기 이미지 중 최적의 1장을 선택하고, 해당 이미지를 바탕으로 Gemini에게 스타일과 스타일별 확률, 추천 항목(추가/제거/변경 가구)에 대한 리포트 분석을 txt 파일로 제공하고 JSON으로 저장합니다. | 
-| main_new_looks.py| 2단계: 스타일 변경 시뮬레이션 | 사용자가 선택한 스타일(또는 AI 추천 스타일)을 방 전체에 적용하여 새로운 이미지 1장을 생성하고, 추가로 좌/우 측면 뷰 이미지를 생성합니다. | 
-| main_modify_looks.py| 2단계: 가구 수정 시뮬레이션| 사용자의 선택(user_choice.json)에 따라 AI 리포트 기반의 추가/제거/변경 작업을 순차적으로 수행하여 최종 이미지를 생성하고, 추가로 좌/우 측면 뷰 이미지를 생성합니다. | 
-| main_1img23.py| 보조: 앵글 생성 모듈 | 최종 결과 이미지를 입력받아, 동일한 방 구조를 유지한 채 "수평 각도(-30°, +30°)"만 변경한 2장의 측면 뷰 이미지를 생성하는 핵심 함수를 포함합니다. | 
-| user_choice.json| 사용자 입력 | 가구 추가/제거/변경 기능 적용 여부(use_add, use_remove, use_change)를 저장하는 파일입니다. | 
-| style_choice.json | 사용자 입력 | 선택한 인테리어 스타일(예: "AI 추천", "모던", "미니멀리즘" 등)을 저장하는 파일입니다. | 
-| parsed_report.json| 중간 결과물| main_report.py에서 생성된, 공간 분석 리포트의 파싱된 JSON 데이터입니다.|
-| img4new3r_org.png| 최종 결과물| 스타일 변경 또는 가구 수정 작업 후의 최종 정면 뷰 이미지입니다.|
-| img4new3r_left.png| 최종 결과물| img4new3r_org.png를 기반으로 생성된 좌측 뷰 이미지입니다.|
-| img4new3r_right.png | 최종 결과물| img4new3r_org.png를 기반으로 생성된 우측 뷰 이미지입니다.|
+### Quick Start
+#### Install
+```bash
+conda create --name yoloe3r python=3.10
+conda activate yoloe3r
+git clone 
+pip install requirements.txt
+```
+#### Usage
+```bash
+python pe3r_demo.py
+```
 
+### Acknowledgements
+- [DUSt3R](https://github.com/naver/dust3r) / [MASt3R](https://github.com/naver/mast3r)
+- [SAM](https://github.com/facebookresearch/segment-anything) / [SAM2](https://github.com/facebookresearch/sam2) / [MobileSAM](https://github.com/ChaoningZhang/MobileSAM)
+- [SigLIP](https://github.com/google-research/big_vision)
 
-## 주요 기능
-
-1.  최적 이미지 선택 (1단계): 사용자가 입력한 3장의 방 이미지 중 AI가 가장 적합한 1장(`selected_input_image.jpg`)을 선택합니다.
-2.  공간 분석 리포트 생성 (1단계): 선택된 이미지를 기반으로 공간의 현재 스타일, 문제점, 가구 추가/제거/변경에 대한 추천 사항을 분석하고, 그것에 대한 리포트 분석을 txt파일로도 제공합니다. 또한 파싱된 JSON 파일은 `parsed_report.json`로 저장합니다.
-3.  인테리어 시뮬레이션 (2단계):
-   - 스타일 변경 (`main_new_looks.py`): `style_choice.json`에 따라 방 전체 스타일을 새로운 스타일로 변경합니다.
-   - 가구 부분 수정 (`main_modify_looks.py`): `user_choice.json`에 따라 AI 추천 가구의 추가, 제거, 변경 작업을 순차적으로 적용합니다.
-4.  3-Angle 뷰 생성 (2단계): 최종 결과 이미지(`img4new3r_org.png`)를 기반으로, 동일한 구조와 스타일을 유지한 채 수평 각도만 변경한 "좌측(-30°)" 및 "우측(+30°)" 뷰 이미지를 추가 생성합니다.
-
+### BibTeX
+```BibTeX
+@article{hu2025pe3r,
+  title={PE3R: Perception-Efficient 3D Reconstruction},
+  author={Hu, Jie and Wang, Shizun and Wang, Xinchao},
+  journal={arXiv preprint arXiv:2503.07507},
+  year={2025}
+}
+```
 
 ## 기술 스택
 
@@ -45,7 +43,7 @@
 
 
 
-## 설치 및 실행 방법
+## 자세한 설치 및 실행 방법
 
 1. 코드 다운로드 및 환경 설정
 터미널을 열고 저장소를 클론한 후, 필요한 패키지를 설치합니다.
@@ -102,6 +100,6 @@ python main_modify_looks.py
 최종 결과물
 시뮬레이션이 완료되면, 프로젝트 루트 디렉토리에 3장의 최종 이미지 파일이 생성됩니다.
 
->img4new3r_org.png (변경된 사진의 정면 뷰) 
->img4new3r_left.png (좌측 뷰) 
-img4new3r_right.png (우측 뷰)
+- img4new3r_org.png (변경된 사진의 정면 뷰) 
+- img4new3r_left.png (좌측 뷰) 
+- img4new3r_right.png (우측 뷰)
