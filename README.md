@@ -47,8 +47,6 @@
 
 ## 설치 및 실행 방법
 
-```Python
-
 1. 코드 다운로드 및 환경 설정
 터미널을 열고 저장소를 클론한 후, 필요한 패키지를 설치합니다.
 
@@ -58,6 +56,7 @@ git clone https://github.com/SarahCho0/yoloe3r.git
 cd "내가 만든 파일이름"
 # 1-2. 의존성 설치
 pip install -r requirements.txt
+```
 
 2. 환경 설정 
 config.py 파일을 열어 Google GenAI API 키와 초기 입력 이미지 경로를 설정해야 합니다.
@@ -71,6 +70,7 @@ INITIAL_IMAGE_PATHS = [
     "path/to/your/initial_image_3.jpg"
 ]
 # ...
+```
 
 3. 워크플로우 실행
 단계 1: 공간 분석 및 리포트 생성
@@ -79,6 +79,7 @@ INITIAL_IMAGE_PATHS = [
 ```bash
 python main_report.py
 결과: selected_input_image.jpg, parsed_report.json 등이 생성됩니다.
+```
 
 단계 2: 사용자 선택 파일 준비
 프론트엔드 또는 수동으로 시뮬레이션 옵션을 style_choice.json 및 user_choice.json에 저장합니다.
@@ -90,10 +91,12 @@ user_choice.json{"use_add": true, "use_remove": false, "use_change": true} - 가
 A. 전체 스타일 변경 시뮬레이션 (style_choice.json 사용)
 ```bash
 python main_new_looks.py
+```
 
 B. 가구 부분 수정 시뮬레이션 (user_choice.json 사용)
 ```bash
 python main_modify_looks.py
+```
 
 최종 결과물
 시뮬레이션이 완료되면, 프로젝트 루트 디렉토리에 3장의 최종 이미지 파일이 생성됩니다.
