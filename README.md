@@ -101,6 +101,7 @@ python main_modify_looks.py
 
 최종 결과물
 시뮬레이션이 완료되면, 프로젝트 루트 디렉토리에 3장의 최종 이미지 파일이 생성됩니다.
-img4new3r_org.png (변경된 사진의 정면 뷰) /
-img4new3r_left.png (좌측 뷰) /
+
+>img4new3r_org.png (변경된 사진의 정면 뷰) 
+>img4new3r_left.png (좌측 뷰) 
 img4new3r_right.png (우측 뷰)
